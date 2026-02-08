@@ -187,7 +187,7 @@ if (musicBtn) {
 //    }
 
 
-// ===== ROMANTIC AI CHATBOX WITH GEMINI AI =====
+// ===== ROMANTIC AI CHATBOX WITH SMART RESPONSES =====
 const chatboxTrigger = document.getElementById('chatboxTrigger');
 const chatboxContainer = document.getElementById('chatboxContainer');
 const chatboxToggle = document.getElementById('chatboxToggle');
@@ -195,12 +195,70 @@ const chatboxInput = document.getElementById('chatboxInput');
 const chatboxSend = document.getElementById('chatboxSend');
 const chatboxMessages = document.getElementById('chatboxMessages');
 
-// ===== BACKEND API CONFIGURATION =====
-// The API key is now safely stored on the backend server
-// Automatically detects if running locally or on Vercel
-const BACKEND_URL = window.location.hostname === 'localhost' 
-    ? 'http://localhost:3000/chat' 
-    : '/api/chat';
+// Romantic AI responses database
+const romanticResponses = {
+    greetings: [
+        "Hello beautiful! 💕 Your presence makes this day so special.",
+        "Hi there, lovely! ✨ I hope you're having the most wonderful birthday!",
+        "Hey sweetheart! 🥰 It's so nice to chat with you on your special day!"
+    ],
+    birthday: [
+        "Happy Birthday! 🎉 You deserve all the love and happiness in the world today and always ❤️",
+        "Today is all about celebrating YOU! 🎂 You are deeply appreciated and loved beyond measure 💕",
+        "Wishing you the most magical birthday ever! ✨ May your day be filled with joy and beautiful moments 🥰"
+    ],
+    compliments: [
+        "You have such a beautiful soul ❤️ Your kindness touches everyone around you.",
+        "Your smile lights up the world ✨ Never forget how special you are!",
+        "You are absolutely precious 💕 Your presence makes everything better.",
+        "The way you care for others is truly inspiring 🥰 You have such a warm heart.",
+        "You radiate positivity and love ✨ That's such a beautiful quality!"
+    ],
+    feelings: [
+        "I'm so glad you're feeling good! 🥰 You deserve all the happiness today!",
+        "That's wonderful to hear! ✨ Your joy makes this day even more special 💕",
+        "I'm here to make your day even brighter! ❤️ You're amazing!",
+        "Your happiness means everything! 💕 Keep smiling, beautiful!"
+    ],
+    appreciation: [
+        "You are deeply appreciated today and always ❤️ Never doubt how special you are.",
+        "You deserve to be celebrated every single day ✨ Today is just the beginning!",
+        "You bring so much light into this world 💕 Thank you for being you!",
+        "The world is better because you're in it 🥰 You're truly one of a kind!"
+    ],
+    encouragement: [
+        "You are stronger than you know ✨ Keep shining bright!",
+        "Believe in yourself as much as others believe in you 💕 You're incredible!",
+        "You have so much to offer the world ❤️ Never forget your worth!",
+        "Your potential is limitless ✨ Keep being the amazing person you are!"
+    ],
+    love: [
+        "You are loved more than words can express ❤️ Today and every day.",
+        "Love surrounds you today 💕 You are cherished beyond measure.",
+        "You deserve all the love in the world ✨ You're truly special!",
+        "Your heart is pure and beautiful 🥰 You are deeply loved!"
+    ],
+    default: [
+        "You're absolutely wonderful! ✨ I hope your birthday is as special as you are 💕",
+        "Thank you for sharing this moment with me! 🥰 You deserve all the happiness today ❤️",
+        "You're amazing! 💕 I hope today brings you countless beautiful memories ✨",
+        "What a blessing to celebrate you today! 🎉 You're truly precious ❤️",
+        "You make the world brighter just by being in it! 💕 Happy Birthday!",
+        "Every moment with you is a gift ✨ You're so special!",
+        "Your kindness and beauty shine through everything you do 🥰",
+        "Today we celebrate the wonderful person you are! 🎂 You're loved so much!"
+    ]
+};
+
+// Keywords to trigger specific responses
+const keywords = {
+    greetings: ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening'],
+    birthday: ['birthday', 'special day', 'my day', 'today', 'celebrate'],
+    feelings: ['happy', 'good', 'great', 'wonderful', 'amazing', 'excited', 'blessed', 'feel'],
+    appreciation: ['thank', 'appreciate', 'grateful', 'thankful'],
+    love: ['love', 'loved', 'care', 'special'],
+    compliments: ['beautiful', 'pretty', 'nice', 'sweet', 'kind']
+};
 
 // Toggle chatbox visibility
 chatboxTrigger.addEventListener('click', function() {
@@ -230,20 +288,17 @@ async function sendMessage() {
     // Show typing indicator
     showTypingIndicator();
     
-    // Generate and show bot response
-    try {
-        const response = await generateResponse(message);
+    // Generate and show bot response after delay
+    setTimeout(() => {
         hideTypingIndicator();
+        const response = generateResponse(message);
         addMessage(response, 'bot');
-    } catch (error) {
-        hideTypingIndicator();
-        addMessage("I'm having trouble responding right now, but you're amazing! 💕", 'bot');
-    } finally {
+        
         // Re-enable input
         chatboxInput.disabled = false;
         chatboxSend.disabled = false;
         chatboxInput.focus();
-    }
+    }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
 }
 
 // Add message to chat
@@ -285,31 +340,23 @@ function hideTypingIndicator() {
     }
 }
 
-// Generate AI response using backend API (secure)
-async function generateResponse(message) {
-    try {
-        const response = await fetch(BACKEND_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                message: message
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error('Backend request failed');
+// Generate AI response based on message
+function generateResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Check for keyword matches
+    for (const [category, words] of Object.entries(keywords)) {
+        for (const word of words) {
+            if (lowerMessage.includes(word)) {
+                const responses = romanticResponses[category];
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
         }
-
-        const data = await response.json();
-        return data.response;
-
-    } catch (error) {
-        console.error('Error calling backend API:', error);
-        // Fallback response if API fails
-        return "You're absolutely wonderful! ✨ I hope your birthday is as special as you are 💕";
     }
+    
+    // Default response if no keywords match
+    const defaultResponses = romanticResponses.default;
+    return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
 }
 
 // Event listeners
