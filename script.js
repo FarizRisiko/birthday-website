@@ -200,7 +200,7 @@ const chatboxMessages = document.getElementById('chatboxMessages');
 // Automatically detects if running locally or on Vercel
 const BACKEND_URL = window.location.hostname === 'localhost' 
     ? 'http://localhost:3000/chat' 
-    : '/chat';
+    : '/api/chat';
 
 // Toggle chatbox visibility
 chatboxTrigger.addEventListener('click', function() {

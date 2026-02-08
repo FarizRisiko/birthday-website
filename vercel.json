@@ -1,38 +1,12 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "styles.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "script.js",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
-      "src": "/chat",
-      "dest": "/server.js"
+      "src": "/api/chat",
+      "dest": "/api/chat.js"
     },
     {
-      "src": "/health",
-      "dest": "/server.js"
-    },
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*\\.(css|js|jpg|png|gif|svg|ico))",
+      "src": "/(.*)",
       "dest": "/$1"
     }
   ]
