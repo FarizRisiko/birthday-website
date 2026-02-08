@@ -21,7 +21,7 @@ Guidelines:
 
 Remember: Your goal is to make her smile, feel cherished, and emotionally touched on her birthday.`;
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -50,8 +50,7 @@ export default async function handler(req, res) {
 
     if (!GEMINI_API_KEY) {
       console.error('GEMINI_API_KEY not found in environment variables');
-      return res.status(500).json({ 
-        error: "API key not configured",
+      return res.status(200).json({ 
         response: "I'm having trouble connecting right now, but you're absolutely wonderful! 💕"
       });
     }
@@ -81,7 +80,9 @@ export default async function handler(req, res) {
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`Gemini API error: ${response.status}`, errorText);
-      throw new Error(`Gemini API error: ${response.status}`);
+      return res.status(200).json({ 
+        response: "You're absolutely wonderful! ✨ I hope your birthday is as special as you are 💕"
+      });
     }
 
     const data = await response.json();
@@ -93,10 +94,8 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error("Error in chat handler:", error);
-    return res.status(500).json({ 
-      error: "Failed to get AI response",
-      message: error.message,
+    return res.status(200).json({ 
       response: "You're absolutely wonderful! ✨ I hope your birthday is as special as you are 💕"
     });
   }
-}
+};
