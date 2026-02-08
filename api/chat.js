@@ -1,5 +1,4 @@
 // Vercel Serverless Function for Gemini AI Chat
-import fetch from "node-fetch";
 
 // System prompt for romantic AI personality
 const SYSTEM_PROMPT = `You are a romantic, gentle, and affectionate AI companion created for a birthday website. Your purpose is to make the birthday girl feel loved, appreciated, and special on her birthday.
@@ -57,7 +56,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // Call Gemini API
+    // Call Gemini API using native fetch (available in Node 18+)
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,
       {
