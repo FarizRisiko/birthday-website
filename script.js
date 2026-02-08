@@ -185,3 +185,145 @@ if (musicBtn) {
 //        object-fit: cover;
 //        border-radius: 15px;
 //    }
+
+
+// ===== ROMANTIC AI CHATBOX WITH GEMINI AI =====
+const chatboxTrigger = document.getElementById('chatboxTrigger');
+const chatboxContainer = document.getElementById('chatboxContainer');
+const chatboxToggle = document.getElementById('chatboxToggle');
+const chatboxInput = document.getElementById('chatboxInput');
+const chatboxSend = document.getElementById('chatboxSend');
+const chatboxMessages = document.getElementById('chatboxMessages');
+
+// ===== BACKEND API CONFIGURATION =====
+// The API key is now safely stored on the backend server
+// Automatically detects if running locally or on Vercel
+const BACKEND_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000/chat' 
+    : '/chat';
+
+// Toggle chatbox visibility
+chatboxTrigger.addEventListener('click', function() {
+    chatboxContainer.classList.add('active');
+    chatboxTrigger.style.display = 'none';
+    chatboxInput.focus();
+});
+
+chatboxToggle.addEventListener('click', function() {
+    chatboxContainer.classList.remove('active');
+    chatboxTrigger.style.display = 'flex';
+});
+
+// Send message function
+async function sendMessage() {
+    const message = chatboxInput.value.trim();
+    if (message === '') return;
+    
+    // Add user message
+    addMessage(message, 'user');
+    chatboxInput.value = '';
+    
+    // Disable input while processing
+    chatboxInput.disabled = true;
+    chatboxSend.disabled = true;
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Generate and show bot response
+    try {
+        const response = await generateResponse(message);
+        hideTypingIndicator();
+        addMessage(response, 'bot');
+    } catch (error) {
+        hideTypingIndicator();
+        addMessage("I'm having trouble responding right now, but you're amazing! 💕", 'bot');
+    } finally {
+        // Re-enable input
+        chatboxInput.disabled = false;
+        chatboxSend.disabled = false;
+        chatboxInput.focus();
+    }
+}
+
+// Add message to chat
+function addMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', `${sender}-message`);
+    
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('message-content');
+    contentDiv.textContent = text;
+    
+    messageDiv.appendChild(contentDiv);
+    chatboxMessages.appendChild(messageDiv);
+    
+    // Scroll to bottom
+    chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+}
+
+// Show typing indicator
+function showTypingIndicator() {
+    const typingDiv = document.createElement('div');
+    typingDiv.classList.add('message', 'bot-message');
+    typingDiv.id = 'typingIndicator';
+    
+    const indicatorDiv = document.createElement('div');
+    indicatorDiv.classList.add('typing-indicator');
+    indicatorDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    
+    typingDiv.appendChild(indicatorDiv);
+    chatboxMessages.appendChild(typingDiv);
+    chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+}
+
+// Hide typing indicator
+function hideTypingIndicator() {
+    const typingIndicator = document.getElementById('typingIndicator');
+    if (typingIndicator) {
+        typingIndicator.remove();
+    }
+}
+
+// Generate AI response using backend API (secure)
+async function generateResponse(message) {
+    try {
+        const response = await fetch(BACKEND_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Backend request failed');
+        }
+
+        const data = await response.json();
+        return data.response;
+
+    } catch (error) {
+        console.error('Error calling backend API:', error);
+        // Fallback response if API fails
+        return "You're absolutely wonderful! ✨ I hope your birthday is as special as you are 💕";
+    }
+}
+
+// Event listeners
+chatboxSend.addEventListener('click', sendMessage);
+
+chatboxInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        sendMessage();
+    }
+});
+
+// Auto-open chatbox after 3 seconds (optional)
+setTimeout(() => {
+    if (!chatboxContainer.classList.contains('active')) {
+        chatboxTrigger.style.animation = 'bounce 0.5s ease-in-out 3';
+    }
+}, 3000);
