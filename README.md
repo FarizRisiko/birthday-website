@@ -1,146 +1,98 @@
-# 💝 Birthday Website for Your Girlfriend
+# � Birthday Website for Aleeya Farzana
 
-A romantic and emotional birthday website created as a heartfelt gift with AI-powered chatbox.
+A romantic blue-themed birthday surprise website with beautiful animations and interactive features.
 
 ## 🎨 Features
 
-- **Landing Page** - Beautiful welcome with her name and romantic message
-- **Love Message** - Heartfelt birthday wishes in an elegant card
-- **Memories Gallery** - Photo gallery with hover effects (placeholders included)
-- **Why She's Special** - Cards explaining what makes her precious
-- **Surprise Section** - Interactive reveal with confetti animation
-- **AI Chatbox** - Romantic AI companion powered by Google Gemini (secure backend)
-- **Final Message** - Romantic closing note
-- **Floating Hearts** - Gentle background animation
-- **Music Control** - Optional background music button
-- **Fully Responsive** - Works perfectly on mobile and desktop
+- ✨ Romantic intro popup with "Do you love me?" interaction
+- 💙 Hero section with background image
+- ⏰ Live countdown timer to birthday
+- 📸 "Many Versions of Aleeya" - 9 image cards with labels
+- 🖼️ Memories section with 4 photo cards
+- 💌 Love letter with typing animation
+- 🎁 Hidden surprise button
+- 💬 Smart chatbox with romantic responses
+- 📱 Fully responsive design
 
-## 🚀 Quick Start
+## �️ How to Replace Images
 
-### 1. Install Dependencies
+### Hero Section (First Page)
+Replace this line in `index.html` (around line 45):
+```html
+<img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800" alt="Hero" class="hero-image">
+```
+Change to:
+```html
+<img src="your-image.jpg" alt="Hero" class="hero-image">
+```
+
+### Many Versions Section (9 images)
+Find these lines in `index.html` (around lines 75-120) and replace the `src` URLs:
+```html
+<img src="https://images.unsplash.com/..." alt="Cantik" class="version-image">
+```
+Change to:
+```html
+<img src="cantik.jpg" alt="Cantik" class="version-image">
+```
+
+Do this for all 9 images:
+1. Cantik
+2. Comey
+3. Gorgeous
+4. Ayu
+5. Goofy
+6. Manja
+7. Clingy
+8. Strong
+9. Soft
+
+### Memories Section (4 images)
+Find these lines in `index.html` (around lines 130-160) and replace:
+```html
+<img src="https://images.unsplash.com/..." alt="Memory 1" class="memory-photo">
+```
+Change to:
+```html
+<img src="memory1.jpg" alt="Memory 1" class="memory-photo">
+```
+
+## 📝 Customization
+
+### Change Birthday Date
+In `script.js` (line 145), update:
+```javascript
+const birthday = new Date('2025-12-31T00:00:00').getTime();
+```
+
+### Edit Love Letter
+In `script.js` (line 150), edit the `fullText` variable with your own message.
+
+### Change Captions
+In `index.html`, edit the text inside `<div class="memory-caption">` tags.
+
+## 🚀 Deployment
+
+### Push to GitHub
 ```bash
-npm install
+git add .
+git commit -m "Update images and content"
+git push
 ```
 
-### 2. Set Up Gemini API Key
-1. Get a FREE API key from: https://makersuite.google.com/app/apikey
-2. Open `.env` file
-3. Replace `YOUR_API_KEY_HERE` with your actual API key:
-   ```
-   GEMINI_API_KEY=AIzaSyAbc123YourActualKeyHere
-   ```
+Vercel will automatically redeploy your website!
 
-### 3. Start the Server
-```bash
-npm start
-```
-
-### 4. Open the Website
-Open your browser and go to: http://localhost:3000
-
-## 🔒 Security Features
-
-✅ **API Key is SAFE** - Stored in `.env` file (never committed to GitHub)  
-✅ **Backend Protection** - API key never exposed to frontend  
-✅ **Professional Setup** - Industry-standard security practices  
-✅ **`.gitignore`** - Automatically prevents `.env` from being uploaded
-
-## ✏️ Customization Guide
-
-### Change Her Name
-In `index.html`, find and replace `[Her Name]` with her actual name.
-
-### Edit Love Messages
-All text content is in `index.html`. Simply find the sections and edit:
-- Landing subtitle
-- Love message section
-- Photo captions
-- Reason cards
-- Surprise message
-- Final message
-
-### Add Your Photos
-1. Save your photos in the same folder as `index.html`
-2. In `index.html`, replace the `.image-placeholder` divs with:
-   ```html
-   <img src="photo1.jpg" alt="Description" style="width: 100%; height: 300px; object-fit: cover; border-radius: 15px;">
-   ```
-
-### Change Colors
-In `styles.css`, modify the color variables at the top:
-```css
---primary-pink: #ffb3d9;
---soft-purple: #e6b3ff;
---cream: #fff5f7;
---soft-red: #ff9999;
---lavender: #e6e6fa;
-```
-
-### Add Background Music (Optional)
-1. Add your music file (e.g., `music.mp3`) to the project folder
-2. In `script.js`, uncomment the audio code section
-3. Update the file path: `const audio = new Audio('music.mp3');`
-
-## 🌐 Deploy to Production
-
-### Option 1: Deploy Backend + Frontend Together
-Use platforms like:
-- **Render** (free tier available)
-- **Railway** (free tier available)
-- **Heroku**
-
-### Option 2: Separate Deployment
-- **Backend**: Deploy `server.js` to Render/Railway
-- **Frontend**: Deploy to GitHub Pages
-- Update `BACKEND_URL` in `script.js` to your backend URL
-
-### Important for Deployment:
-1. Set environment variable `GEMINI_API_KEY` on your hosting platform
-2. Update `BACKEND_URL` in `script.js` if backend is on different domain
-3. Make sure `.env` is in `.gitignore` (already done!)
-
-## 📁 Project Structure
+## 📁 File Structure
 
 ```
 birthday-website/
-├── index.html          # Main website
+├── index.html          # Main HTML file
 ├── styles.css          # All styling
-├── script.js           # Frontend logic + chatbox
-├── server.js           # Secure backend API
-├── package.json        # Dependencies
-├── .env                # API key (NEVER commit this!)
-├── .gitignore          # Protects sensitive files
-└── README.md           # This file
+├── script.js           # JavaScript functionality
+├── .gitignore         # Git ignore file
+└── README.md          # This file
 ```
-
-## 🤖 AI Chatbox Features
-
-- Romantic, caring personality
-- Responds naturally to any message
-- Gives birthday wishes and compliments
-- Makes her feel loved and special
-- Uses emojis like ❤️✨🥰💕
-- Typing animation for realistic feel
-
-## 📱 Mobile Friendly
-
-The website automatically adapts to any screen size for the perfect experience on phones, tablets, and computers.
 
 ## 💕 Made with Love
 
-This website was created to make someone special feel loved and appreciated on their birthday.
-
-## 🆘 Troubleshooting
-
-**Chatbox not responding?**
-- Make sure you added your API key in `.env`
-- Check if server is running (`npm start`)
-- Open browser console (F12) to see any errors
-
-**Can't install dependencies?**
-- Make sure Node.js is installed: https://nodejs.org/
-- Run `npm install` again
-
-**Port 3000 already in use?**
-- Change `PORT=3000` to `PORT=3001` in `.env` file
-
+Created for Aleeya Farzana's 22nd birthday 💙

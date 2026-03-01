@@ -3,207 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love ❤️</title>
+    <title>Happy Birthday Aleeya 💙</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Floating hearts animation -->
-    <div class="hearts-container" id="heartsContainer"></div>
-
-    <!-- Landing Page -->
-    <section class="landing-section" id="landing">
-        <div class="landing-content">
-            <h1 class="main-title fade-in">Happy Birthday ❤️</h1>
-            <h2 class="name-title fade-in-delay">My Dearest [Her Name]</h2>
-            <p class="subtitle fade-in-delay-2">To the most precious person in my life</p>
-            <button class="scroll-btn fade-in-delay-3" onclick="scrollToSection('love-message')">
-                Open Your Gift ↓
-            </button>
-        </div>
-    </section>
-
-    <!-- Love Message Section -->
-    <section class="section love-message-section" id="love-message">
-        <div class="container">
-            <h2 class="section-title">A Message From My Heart</h2>
-            <div class="message-box">
-                <p class="love-text">
-                    My dearest love,<br><br>
-                    
-                    Today is your special day, and I wanted to create something unique just for you. 
-                    Words can never fully express how much you mean to me, but I'll try my best.<br><br>
-                    
-                    You are the light that brightens my darkest days, the smile that makes everything better, 
-                    and the love that fills my heart with joy. Every moment with you is a treasure, 
-                    and I'm so grateful to have you in my life.<br><br>
-                    
-                    On this beautiful day, I want you to know that you are loved beyond measure, 
-                    cherished beyond words, and precious beyond compare.<br><br>
-                    
-                    Happy Birthday, my love. Here's to many more beautiful moments together. ❤️
-                </p>
+    <!-- Romantic Intro Popup -->
+    <div class="intro-overlay" id="introOverlay">
+        <div class="stars-container" id="starsContainer"></div>
+        <div class="intro-popup" id="introPopup">
+            <div class="popup-content">
+                <h2 class="popup-title" id="popupTitle">Before you enter… I need to ask something first 👀</h2>
+                <p class="popup-question" id="popupQuestion">Do you love me?</p>
+                <div class="popup-gif" id="popupGif"></div>
+                <div class="button-container" id="buttonContainer">
+                    <button class="btn-yes" id="btnYes">💙 Yes</button>
+                    <button class="btn-no" id="btnNo">🤍 No</button>
+                </div>
+                <button class="btn-enter" id="btnEnter" style="display: none;">Enter My Birthday Girl's World ✨</button>
             </div>
         </div>
-    </section>
-
-    <!-- Memories Section -->
-    <section class="section memories-section" id="memories">
-        <div class="container">
-            <h2 class="section-title">Our Beautiful Memories</h2>
-            <div class="gallery">
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span>Photo 1</span>
-                    </div>
-                    <p class="caption">Our first adventure together</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span>Photo 2</span>
-                    </div>
-                    <p class="caption">That perfect day</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span>Photo 3</span>
-                    </div>
-                    <p class="caption">Your beautiful smile</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span>Photo 4</span>
-                    </div>
-                    <p class="caption">Making memories</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span>Photo 5</span>
-                    </div>
-                    <p class="caption">Forever moments</p>
-                </div>
-                <div class="gallery-item">
-                    <div class="image-placeholder">
-                        <span>Photo 6</span>
-                    </div>
-                    <p class="caption">Us against the world</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why She's Special Section -->
-    <section class="section special-section" id="special">
-        <div class="container">
-            <h2 class="section-title">Why You're So Special To Me</h2>
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="icon">💖</div>
-                    <h3>Your Beautiful Heart</h3>
-                    <p>Your kindness and compassion inspire me every day. You make the world a better place.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="icon">✨</div>
-                    <h3>Your Radiant Smile</h3>
-                    <p>Your smile lights up my world and makes everything feel right. It's my favorite thing.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="icon">🌟</div>
-                    <h3>Your Amazing Spirit</h3>
-                    <p>Your strength, courage, and positivity motivate me to be a better person every day.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="icon">💝</div>
-                    <h3>Your Loving Nature</h3>
-                    <p>The way you love and care for others shows the beautiful soul you have inside.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="icon">🎵</div>
-                    <h3>Your Laughter</h3>
-                    <p>Your laugh is music to my ears. It's the sweetest sound and brings me pure joy.</p>
-                </div>
-                <div class="reason-card">
-                    <div class="icon">🌹</div>
-                    <h3>Simply You</h3>
-                    <p>Everything about you is perfect. You are my dream come true, my forever love.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Surprise Section -->
-    <section class="section surprise-section" id="surprise">
-        <div class="container">
-            <h2 class="section-title">A Special Surprise</h2>
-            <div class="surprise-box" id="surpriseBox">
-                <button class="surprise-btn" id="surpriseBtn">Click to Reveal Your Surprise 🎁</button>
-                <div class="surprise-content" id="surpriseContent">
-                    <div class="surprise-message">
-                        <h3>🎉 Surprise! 🎉</h3>
-                        <p>
-                            I've planned something special for us! 
-                            Get ready for an amazing day filled with love, laughter, and beautiful moments.
-                            <br><br>
-                            This is just the beginning of celebrating you today! ❤️
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final Message -->
-    <section class="section final-section" id="final">
-        <div class="container">
-            <div class="final-message">
-                <h2 class="final-title">I Love You ❤️</h2>
-                <p class="final-text">
-                    I hope this small website makes you smile today.<br>
-                    You deserve all the happiness in the world.<br><br>
-                    Thank you for being you, for being mine, and for making life so beautiful.<br><br>
-                    Happy Birthday, my love. Here's to forever with you. 💕
-                </p>
-                <div class="signature">With all my love, always</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Music Control (Optional) -->
-    <div class="music-control" id="musicControl">
-        <button class="music-btn" id="musicBtn" title="Play background music">
-            🎵
-        </button>
     </div>
 
-    <!-- Romantic AI Chatbox -->
+    <!-- Floating particles -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-image-container">
+            <img src="aleeya ayu.jpeg" alt="Hero" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title fade-in">Happy 22nd Birthday, Aleeya 💙</h1>
+            <p class="hero-subtitle fade-in-delay">My lovely gf and the love of my life</p>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="section countdown-section" id="countdown">
+        <div class="container">
+            <h2 class="section-title">Time Until Your Special Day</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Many Versions Section -->
+    <section class="section versions-section" id="versions">
+        <div class="container">
+            <h2 class="section-title">Many Versions of Aleeya Farzana</h2>
+            <div class="versions-grid">
+                <div class="version-card" data-version="cantik">
+                    <div class="version-front">
+                        <img src="cantik2.jpeg" alt="Cantik" class="version-image">
+                        <div class="version-label">
+                            <h3>Cantik 💙</h3>
+                        </div>
+                    </div>
+                    <div class="version-back">
+                        <p>Aleeya sangatlah cantik dan menawan hihihiii.... rinduuu</p>
+                    </div>
+                </div>
+                <div class="version-card" data-version="comey">
+                    <div class="version-front">
+                        <img src="comey.jpeg" alt="Comey" class="version-image">
+                        <div class="version-label">
+                            <h3>Comey 🥰</h3>
+                        </div>
+                    </div>
+                    <div class="version-back">
+                        <p>Kecomelan aleeya is irresistible. The way you laugh, the way you pout pure adorable huhuhuuu rindunya.</p>
+                    </div>
+                </div>
+                <div class="version-card" data-version="gorgeous">
+                    <div class="version-front">
+                        <img src="gorgeous.jpeg" alt="Gorgeous" class="version-image">
+                        <div class="version-label">
+                            <h3>Gorgeous ✨</h3>
+                        </div>
+                    </div>
+                    <div class="version-back">
+                        <p>Gorgeousnya aleeya niiii hehehe... rinduu</p>
+                    </div>
+                </div>
+                <div class="version-card" data-version="ayu">
+                    <div class="version-front">
+                        <img src="ayu.jpeg" alt="Ayu" class="version-image">
+                        <div class="version-label">
+                            <h3>Ayu 🌸</h3>
+                        </div>
+                    </div>
+                    <div class="version-back">
+                        <p>Ayunyee, macam wanita melayu terakhir wuhuuu.... rinduu</p>
+                    </div>
+                </div>
+                <div class="version-card" data-version="goofy">
+                    <div class="version-front">
+                        <img src="goofy.png" alt="Goofy" class="version-image">
+                        <div class="version-label">
+                            <h3>Goofy 😄</h3>
+                        </div>
+                    </div>
+                    <div class="version-back">
+                        <p>Your silly side makes me laugh so hard. You're my favorite comedian yayanggg. rindu sangat sangat hmm</p>
+                    </div>
+                </div>
+                <div class="version-card" data-version="manja">
+                    <div class="version-front">
+                        <img src="clingy.jpeg" alt="Manja" class="version-image">
+                        <div class="version-label">
+                            <h3>Manja 🥺 and Clingy 💕</h3>
+                        </div>
+                    </div>
+                    <div class="version-back">
+                        <p>When you're clingy and manja, my heart melts completely. I love taking care of youuu. cuma tak selalu yayang camtu... its oceyyy, sometimes pun dah memadai... still rinduu</p>
+                    </div>
+                </div>
+                <div class="version-card" data-version="soft">
+                    <div class="version-front">
+                        <img src="soft.jpeg" alt="Soft" class="version-image">
+                        <div class="version-label">
+                            <h3>Soft 🌙</h3>
+                        </div>
+                    </div>
+                    <div class="version-back">
+                        <p> Yayang sangatlah gentle with me... it makes my heart soft and feel loved hehehe... rinduu sangat</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Love Letter Section -->
+    <section class="section letter-section" id="letter">
+        <div class="container">
+            <h2 class="section-title">My Wish For You</h2>
+            <div class="letter-container glass-card">
+                <p class="letter-text" id="letterText"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hidden Surprise Section -->
+    <section class="section surprise-section" id="surprise">
+        <div class="container">
+            <button class="surprise-btn" id="surpriseBtn">Click if you feel loved 💙</button>
+            <div class="surprise-message" id="surpriseMessage">
+                <h3>Yeayyy Yayang tekann💙</h3>
+                <p>Did I make you happy or feel loved? hehehe, Happy birthday Aleeya Farzana Sayangkuuuu.... The only girl that make me fall so hard. sorry tau... with the time that I have, the tiredness, overwhelm and many more huhuhus after go back from work... ni je yang baby sempat buat sayang... maafkan baby.... I hope you like it cause I already buat yang semampunya huhuhu.. I love you so so much tauuu💙✨</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chatbox -->
     <div class="chatbox-container" id="chatboxContainer">
         <div class="chatbox-header" id="chatboxHeader">
             <div class="chatbox-title">
-                <span class="chat-icon">💕</span>
+                <span class="chat-icon">💙</span>
                 <span>Birthday Wishes</span>
             </div>
-            <button class="chatbox-toggle" id="chatboxToggle">−</button>
+            <button class="chatbox-close" id="chatboxClose">×</button>
         </div>
-        <div class="chatbox-body" id="chatboxBody">
+        <div class="chatbox-body">
             <div class="chatbox-messages" id="chatboxMessages">
                 <div class="message bot-message">
                     <div class="message-content">
-                        Hi love 💕 I'm here to wish you the happiest birthday ever. How are you feeling today?
+                        Hi Aleeya 💙 I'm here to wish you the happiest birthday ever. How are you feeling today?
                     </div>
                 </div>
             </div>
             <div class="chatbox-input-container">
                 <input type="text" class="chatbox-input" id="chatboxInput" placeholder="Type your message...">
-                <button class="chatbox-send" id="chatboxSend">
-                    <span>💌</span>
-                </button>
+                <button class="chatbox-send" id="chatboxSend">💌</button>
             </div>
         </div>
     </div>
 
     <!-- Chatbox Trigger Button -->
-    <button class="chatbox-trigger" id="chatboxTrigger">
-        💬
-    </button>
+    <button class="chatbox-trigger" id="chatboxTrigger">💬</button>
 
     <script src="script.js"></script>
 </body>
